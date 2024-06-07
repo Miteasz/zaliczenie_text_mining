@@ -1,0 +1,12 @@
+2024-06-07 22:29:44,973:INFO:Loaded text from 01 Harry Potter and the Sorcerers Stone.txt.
+2024-06-07 22:29:44,973:INFO:TextMining instance created.
+2024-06-07 22:29:45,012:INFO:Initial analysis completed: {'word_count': 78431, 'unique_words': 11843, 'average_word_length': 4.559026405375426, 'most_common_words': [('the', 3595), ('and', 1869), ('to', 1834)], 'main_character_counts': {'Harry': 1339, 'Ron': 578, 'Hermione': 270}}.
+2024-06-07 22:29:45,059:INFO:Text normalized.
+2024-06-07 22:29:45,184:INFO:Text tokenized.
+2024-06-07 22:29:45,819:INFO:Text stemmed.
+2024-06-07 22:29:46,775:INFO:Text lemmatized.
+2024-06-07 22:29:46,899:INFO:Text vectorized using TF-IDF.
+2024-06-07 22:29:56,760:INFO:Named Entity Recognition performed.
+2024-06-07 22:29:57,122:INFO:Sentiment analysis performed.
+2024-06-07 22:29:57,140:INFO:Topic modeling performed using LDA.
+2024-06-07 22:29:57,140:INFO:All text processing operations completed.

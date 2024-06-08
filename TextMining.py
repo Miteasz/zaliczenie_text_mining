@@ -3,6 +3,7 @@ import nltk
 import logging
 from collections import Counter
 from datetime import datetime
+from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer, WordNetLemmatizer
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -13,6 +14,7 @@ from textblob import TextBlob
 # Pobieranie zasobów NLTK.
 nltk.download('punkt')
 nltk.download('wordnet')
+nltk.download('stopwords')
 
 # Konfiguracja loggera.
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -134,6 +136,19 @@ class TextMining:
         logging.info("Text tokenized.")
         return self.tokens
 
+    def remove_stopwords(self):
+        """
+        Usuwa stop words z tokenów.
+
+        Returns:
+            list: Lista tokenów bez stop words.
+        """
+        stop_words = set(stopwords.words('english'))
+        filtered_tokens = [token for token in self.tokens if token not in stop_words]
+        self.tokens = filtered_tokens
+        logging.info("Stop words removed.")
+        return self.tokens
+
     def stem_text(self):
         """
         Wykonuje stemming tokenów.
@@ -238,7 +253,7 @@ class TextMining:
 
     def run_all(self):
         """
-        Uruchamia wszystkie operacje przetwarzania tekstu: wstępna analiza danych, normalizacja, tokenizacja, stemming, lematyzacja, wektoryzacja, 
+        Uruchamia wszystkie operacje przetwarzania tekstu: wstępna analiza danych, normalizacja, tokenizacja, usunięcie stop words, stemming, lematyzacja, wektoryzacja, 
         NER, analiza sentymentu oraz modelowanie tematów.
 
         Returns:
@@ -250,6 +265,8 @@ class TextMining:
         self.normalize_text()
         # Tokenizacja tekstu.
         self.tokenize_text()
+        # Usunięcie stop words.
+        self.remove_stopwords()
         # Stemming tokenów.
         self.stem_text()
         # Lematyzacja tokenów.
